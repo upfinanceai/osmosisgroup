@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osmosis Team - Osmosis Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Hide content by default until authenticated */
+        body {
+            display: none;
+        }
+        body.authenticated {
+            display: block;
+        }
+    </style>
+    <script>
+        // Password protection
+        (function() {
+            const correctPassword = "Osmosis2025!";
+
+            // Prompt for password every time
+            const userPassword = prompt("Please enter the password to access the Team page:");
+
+            if (userPassword === correctPassword) {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('authenticated');
+                });
+            } else {
+                // Redirect immediately on wrong password or cancel
+                if (userPassword === null) {
+                    // User clicked cancel
+                    window.location.replace("../index.html");
+                } else {
+                    // Wrong password
+                    alert("Incorrect password. Access denied.");
+                    window.location.replace("../index.html");
+                }
+                // Prevent any content from showing
+                window.stop();
+            }
+        })();
+    </script>
+    <style>
+        /* Local font definitions */
+        @font-face {
+            font-family: 'Inter';
+            src: url('../assets/fonts/Inter_24pt-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('../assets/fonts/Inter_24pt-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('../assets/fonts/Inter_24pt-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Raleway';
+            src: url('../assets/fonts/Raleway-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Raleway';
+            src: url('../assets/fonts/Raleway-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-raleway {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Navbar styles */
+        .navbar-dark {
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-dark .logo-white {
+            display: block;
+        }
+        .text-xl {
+            color: #F7F7F7 !important;
+            font-family: Inter;
+            font-size: 24px !important;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 120%; /* 28.8px */
+        }
+        /* Override text-base styles */
+        .text-base {
+            color: #8F8F8F !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 20px !important;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140% !important;
+        }
+
+        .text-xl {
+            color: #0C3C60;
+        }
+    </style>
+</head>
+
+<body class="bg-[#121212]" style="background-image: url('../assets/images/a5588c8e0d3fef532ff76b3e7905ecef2e63721b.png');background-color:  #121212; background-size: contain; background-repeat: no-repeat; background-position: center;">
+    <!-- Navbar -->
+    <nav class="navbar-dark fixed top-0 left-0 right-0 z-50 w-full box-border flex items-center justify-between gap-6 px-10 py-3.5">
+        <div class="flex items-center justify-center h-7 w-[198px]">
+            <img src="../assets/images/52b78646802d6b941480f45a53f4cff110ee0c41.svg" alt="Osmosis Group"
+                class="h-7 w-[198.429px] logo-white">
+        </div>
+        <a href="#enterprise"
+            class="bg-white flex items-center justify-center gap-2.5 px-5 py-3 rounded-full hover:bg-[#e0e0e0] transition-colors">
+            <span style="
+            color: #121212;
+text-align: center;
+font-family: Raleway;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 140%; /* 22.4px */">Enterprise</span>
+        </a>
+    </nav>
+
+    <!-- Team Section -->
+    <section class="pt-28 pb-20 px-[120px] md:px-[60px] max-sm:px-4">
+        <div class="max-w-[1200px] mx-auto">
+            <h1 class="font-raleway font-bold text-[#f7f7f7] text-[60px] md:text-5xl max-sm:text-[40px] leading-[1.3] mb-16 text-center">
+                Osmosis Team
+            </h1>
+
+            <!-- Team Members List -->
+            <div class="flex flex-col gap-8">
+                <!-- Andy Chan -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/a187efc9d98ac266545baa6c431cc80573539fab.png" alt="Andy Chan" class="w-full h-full object-cover">
+                            </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Andy Chan</h3>
+                            <p class="font-inter text-xl">Entrepreneur, Investor & Strategic Leader</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Andy Chan is a highly experienced entrepreneur and investor with specialized expertise in family trusts, venture capital, and cross-border business management. He founded his own listed company in Hong Kong in 2017 and became co-owner of a U.S. listed company in 2025. He has actively managed a portfolio of Hong Kong listed companies from 2018 to 2023 and is currently focused on expanding investments in the U.S. market. 
+                            <br><br>
+                            Currently, Andy serves as Managing Director (Asia) and Co-Founder major owner of Osmosis Group, where he directs regional strategy and oversees cross-border investments. He is an active Board Director at Osmosis Group and plays a pivotal role in managing mergers and acquisitions alongside his team.
+                            <br><br>
+                            In addition, Andy sits on the investment committee of Hywood Capital, managing portfolios exceeding HKD 500 million and driving sustainable long-term value creation. Together with his team, he oversees comprehensive investment activities across family offices, hotels, properties, and listed companies in both Hong Kong and the U.S., demonstrating a strong track record in strategic growth and investment excellence.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Ken Lo -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/b51cb848f89f5fc109422a8b4bf0eac9f30b4370.png" alt="Ken Lo" class="w-full h-full object-cover">
+                            </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Ken Lo</h3>
+                            <p class="font-inter text-xl">Ex-OSL & HKSI Founder</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Ken Lo is a pioneer in the blockchain and cryptocurrency space with over 20 years of strategic and operational leadership. As a co-founder of OSL (BC Technology Group, HKSE: 0863), Asia's foremost digital asset platform, Ken has been a key figure among the earliest and most senior participants in the global crypto ecosystem, alongside founding contributors from Binance (BNB), Ethereum (ETH), and numerous other leading fintech ventures. 
+                            <br><br>
+                            During his tenure as Deputy Chairman and Group CEO at BC Technology Group, Ken drove the company's growth into digital asset trading, SaaS wallet infrastructure, and comprehensive institutional services, solidifying its position as a market leader. 
+                            <br><br>
+                            Currently, Ken serves as an influential Board Member and Chairman of key committees at the Hong Kong Securities and Investment Institute (HKSI), where he plays a vital role in shaping fintech and blockchain industry standards as well as corporate outreach initiatives. Celebrated for his deep fintech expertise, Ken is a sought-after keynote speaker at major global blockchain and financial industry forums.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Johnson Chen -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/2abb1327c5c53873f7b9f87f6a8d3aeac61daa76.png" alt="Johnson Chen" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Johnson Chen</h3>
+                            <p class="font-inter text-xl">Corporate Finance & M&A Strategist</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            With over 20 years of experience spanning private equity, management consulting, investment banking, and executive CEO/CSO roles, he is a seasoned corporate finance and M&A strategist. He has made more than 150 investments totaling over $2 billion and played a strategic advisory role in numerous front-line technology companies. A serial entrepreneur, he has built and scaled four successful businesses. 
+                            <br><br>
+                            He currently serves on the Board of Directors of Osmosis Group and Brainhole Technology (HKSE: 2203). He is Vice Chairman for Financial Industry Policy at the AmCham Institute for International Economic Strategy. Previously, he was the Financial Services & M&A Leader at PwC Strategy& (formerly Booz & Company) and headed M&A Strategy and Restructuring at KPMG. He also held the position of Vice Chairman at the Guangdong SME Financing and Listing Promotion Association.
+                            <br><br>
+                            In addition to his professional roles, he is a guest lecturer on business and economic topics at prestigious institutions including Harvard, INSEAD, and BIT. He holds a postgraduate degree in Commerce from the University of Melbourne.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Jason Dong -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/9957be4a830a6ea77b36a15c498e9b6332f00858.png" alt="Jason Dong" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Jason Dong</h3>
+                            <p class="font-inter text-xl">CEO & M&A Specialist</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Jason is the China CEO and CIO of <strong>Hywood Capital</strong>, where he leads investment strategy and cross-border M&A initiatives. He is a member of the 
+                            <strong>Hong Kong CFA Association</strong> and maintains deep relationships with UHNWIs, institutional funds, and listed companies in China. Previously, Jason was Head of Capital Structure at <strong>Huawei Technologies</strong> and General Manager of Finance at <strong>Southern Airlines</strong>. He has also taught finance at top universities including Shanghai University of Finance and Economics, Renmin University, and the New York School of Finance, and is the author of Enterprise Capital Management.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Davin Wu -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/ad64f6bc1c711431728a8e2d1818c8509df91a87.png" alt="Davin Wu" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Davin Wu</h3>
+                            <p class="font-inter text-xl">CPA, CFA, Corporate Finance Executive & Ex-CFO of OSL</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Davin Wu is a seasoned corporate finance expert and CFA charterholder with over 20 years of experience in digital assets, corporate finance, and financial management. As the former Group CFO of OSL (HKSE: 0863), Asia's leading digital asset brokerage, Davin was deeply involved in strategic fundraising, international growth, and regulatory compliance, with particular expertise and familiarity in the issuance and regulatory aspects of stablecoins.
+                            <br><br>
+                            His career bridges traditional finance and emerging fintech markets, with proven leadership in navigating complex regulatory environments related to digital asset issuance and capital raising. Prior to OSL, Davin held senior finance roles at DT Group (China) Holdings, China Digital TV, and Credit Suisse, managing multi-billion HKD cross-border transactions across Hong Kong, Beijing, and New York. 
+                            <br><br>
+                            A Fellow of the Hong Kong Institute of CPAs, Davin is a frequent speaker at industry and investor conferences, recognized for excellence in investor relations and leadership, including earning the Best IR Team in Asia award from Institutional Investor.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Samuel Lau -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/67715cb4d788a0949a8e2f25b38b61b18f5f806b.png" alt="Samuel Lau" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Samuel Lau</h3>
+                            <p class="font-inter text-xl">CPA, Corporate Finance Executive & CFO</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Samuel Lau is a Hong Kong–registered Certified Public Accountant with close to 20 years of professional experience in auditing, corporate finance, and financial management. He has built a strong track record as both a Chief Financial Officer and an Independent Non-Executive Director of several Hong Kong–listed companies, including Green Energy Technology (979), Beijing Resources (618), and FDG Electric Vehicles (418). 
+                            <br><br>
+                            In addition to his board and C-suite roles, Samuel is the founder of his own CPA firm and currently serves as a director of TinQin CPA Limited. In this capacity, he advises and represents listed companies on statutory audits, annual reporting, financial compliance, and governance matters. 
+                            <br><br>
+                            With extensive exposure to both Hong Kong and U.S. listings, Samuel combines technical accounting expertise with hands-on corporate finance leadership. His career reflects a rare blend of CFO experience, audit practice, and board-level governance, making him a trusted advisor to companies navigating capital markets, financial restructuring, and long-term growth.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Jeff Chau -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/5bcb3c386ab2e1a8aea583a5ad08cf15eda92e13.png" alt="Jeff Chau" class="w-full h-full object-cover" 
+                            style="  width: 300px;
+                            height: 160px;
+                            object-fit: cover;
+                            object-position: top;">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Jeff Chau (CHAU Ka Hang)</h3>
+                            <p class="font-inter text-xl">Risk Assessment Director</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Jeff Chau is the founder, CEO, and long-standing Risk Assessment Director of Shan Heng Capital Management, where he leads asset management, investment strategy, and overall corporate operations. With 20 years of industry experience, Jeff has developed extensive networks across Mainland China and Hong Kong, combining deep market insight with rigorous risk management expertise.
+                            <br><br>
+                            Before founding Shan Heng in 2019, Jeff held senior positions including Investment Director at Primero Investment and Wintone Yongli Asset Management, and started his career as an Investment Analyst at Heng Jian Asset Management. A graduate of the University of Waterloo, Jeff brings a unique blend of technical proficiency, market experience, and disciplined risk assessment to his leadership role.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Dr. Arthur Joseph Chan -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/691d079f56da940feb464088989a3cbf3664d5a1.png" alt="Dr. Arthur Joseph Chan" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Dr. Arthur Joseph Chan</h3>
+                            <p class="font-inter text-xl">Corporate Litigation Lawyer</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Arthur Joseph Chan is the founding partner and practising solicitor of NEO Solicitors LLP, where he leads firm operations and manages a broad legal practice. Arthur holds dual qualifications as both a barrister and solicitor in Hong Kong, and is recognized for his expertise in criminal and civil litigation, serving a diverse roster of listed companies, corporates, and high-net-worth individuals.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Cynthia Wong -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/cb992588b2106ca99e76dad08b22baf0b1fcdbd2.png" alt="Cynthia Wong" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Cynthia Wong</h3>
+                            <p class="font-inter text-xl">Corporate Finance Lawyer</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Cynthia is a partner at <strong>Robertsons</strong>, specializing in <strong>corporate finance, securities regulation, and capital markets.</strong> She regularly advises issuers and sponsors on IPOs, fundraising exercises, and compliance matters under the <strong>Hong Kong Stock Exchange</strong> and <strong> Securities and Futures Commission (SFC)</strong> frameworks. Cynthia also acts on mergers, acquisitions, and restructuring transactions, providing comprehensive guidance to both public and private companies. With deep knowledge of securities law and corporate governance, she brings trusted legal expertise to cross-border capital market deals.
+                          
+                            Cynthia also acts on mergers, acquisitions, and restructuring transactions, providing comprehensive guidance to both public and private companies. With deep knowledge of securities law and corporate governance, she brings trusted legal expertise to cross-border capital market deals.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Warren Ko -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/82148980d95622d2ddec7f3159916eac0fd934ab.png" alt="Warren Ko" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">Warren Ko</h3>
+                            <p class="font-inter text-xl">Partner, Corporate Finance Lawyer</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            Warren Ko is a highly respected corporate finance lawyer with decades of experience in capital markets and securities transactions. As a Partner at Robertsons, he leads the firm's Corporate Finance practice and is widely recognized in Hong Kong's legal and business community as one of the most seasoned advisors in the field. 
+                            <br><br>
+                            Warren has played a leading role in hundreds of IPOs on both the Main Board and GEM of the Hong Kong Stock Exchange, as well as numerous U.S. listings, representing issuers, sponsors, and underwriters across a wide range of industries. His extensive experience spans public offerings, secondary fundraisings, debt securities, corporate restructurings, and complex M&A transactions. 
+                            <br><br>
+                            Prior to joining Robertsons, Warren was a partner at a major international law firm where he spearheaded cross-border capital markets work and advised multinational corporations on high-profile market entries. In addition to his practice, he serves as an independent non-executive director of a Hong Kong listed company, contributing his deep knowledge of corporate governance, compliance, and securities regulation. 
+                            <br><br>
+                            With a track record stretching across hundreds of landmark transactions, Warren is regarded as one of Hong Kong's leading authorities in corporate finance law and a trusted advisor to companies, financial institutions, and market participants.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- David Streatfield -->
+                <div class="flex flex-col gap-6  pb-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-20 h-20 rounded flex-shrink-0 overflow-hidden bg-[#1E1E1E]">
+                            <img src="../assets/images/00ee7b45095ea1b0c8fdbc19f02228acd6da4ec1.png" alt="David Streatfield" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-inter font-bold text-[#f7f7f7] text-[32px] mb-1">David Streatfield</h3>
+                            <p class="font-inter text-xl">Institutional Business Development, Managing Director & Head of Institutional Sales at VDX</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-inter text-[#8F8F8F] text-base leading-relaxed">
+                            VDX is building a fully regulated (SFC) virtual asset trading exchange for global institutional clients here in Hong Kong that will adhere to the strict controls that the team know from their previous experience in traditional finance & crypto native companies. They make the journey from tradfi to virtual asset seamless and as hassle free as possible with the highest KYC/AML standards, full custodial insurance, a simple to use API or FIX connecting clients to their exchange and world class support with 24/7 dedicated account managers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise Section -->
+            <div id="enterprise" class="mt-20 pt-16">
+                <h2 class="font-raleway text-center font-bold text-[#f7f7f7] text-[60px] md:text-5xl max-sm:text-[40px] leading-[1.3] mb-12">Enterprise</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Row 1 -->
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">Wan Cheng Chemical & Packaging Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">8291</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">Ju Teng International Holdings Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">1327</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">Allied Sustainability and Environmental Consultants Group Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">8217</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">China National Culture Group Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">745</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">K. Wah International Holdings Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">630</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">China e-Wallet Payment Group Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">8131</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">Glory Sun Financial Group Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">1143</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">FDG Electric Vehicles Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">418</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">Beijing Resources (Holdings) Co., Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">618</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">Green Energy Technology Group Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">979</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">IBO Technology Co. Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">8430</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded overflow-hidden">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">BC Technology Group Ltd</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">8603</span>, HKEX</p>
+                        </div>
+                    </div>
+
+                    <!-- Row 5 - Full width -->
+                    <div class="bg-[#242424] rounded-lg overflow-hidden lg:col-span-3">
+                        <div class="bg-[#242424] p-4 h-[88px] flex items-center">
+                            <p class="font-inter text-[#f7f7f7] text-[20px] leading-[1.4]">Rich Sparkle Holdings Limited</p>
+                        </div>
+                        <div class="bg-[#242424] border-t border-[#2b2b2b] px-4 py-6 flex items-center gap-2">
+                            <img src="../assets/images/83f0bba14e512ebcb38c2a24e66985a953e40119.svg" alt="" class="w-6 h-6">
+                            <p class="font-inter text-[#8f8f8f] text-[20px] leading-[1.4]"><span class="font-bold">Nasdaq: ANPA</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#121212] w-full box-border flex flex-col items-center gap-5 px-10 max-sm:px-4 pt-20 max-sm:pt-10 pb-5">
+        <div class="flex flex-col items-center gap-10 max-sm:gap-6 w-full">
+            <div class="flex flex-wrap items-center gap-20 w-full max-sm:flex-col max-sm:gap-8">
+                <div class="flex-1 flex flex-col gap-4 min-w-[295px] max-sm:min-w-0 max-sm:items-center max-sm:text-center">
+                    <img src="../assets/images/09d5fa9e369e48faeb654ed1938831ffee2cfe23.svg" alt="Osmosis Group"
+                        class="h-10 w-[283.47px] max-sm:h-8 max-sm:w-[226px]">
+                    <p class="font-inter text-[#f7f7f7] max-sm:text-sm leading-[1.5]" style="color: #F7F7F7;
+                    font-family: Inter;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 150%; /* 24px */">
+                        Chen & Law Family Office Private Capital. Global Vision.
+                    </p>
+                </div>
+
+                <div class="flex-1 flex flex-wrap items-start gap-20 min-w-0 max-sm:flex-col max-sm:gap-6">
+                    <div class="font-inter text-base max-sm:text-sm leading-none min-w-64 max-sm:min-w-0 flex flex-col gap-3 max-sm:items-center max-sm:text-center">
+                        <h4 class="text-[#8f8f8f] leading-6">Address</h4>
+                        <address class="text-[#f7f7f7] leading-[1.5] not-italic">
+                            16 Floor, 60 GLOUCESTER ROAD,<br>
+                            Wan Chai, Hong Kong
+                        </address>
+                    </div>
+
+                    <div class="font-inter text-base max-sm:text-sm leading-none min-w-64 max-sm:min-w-0 flex flex-col gap-3 max-sm:items-center max-sm:text-center">
+                        <h4 class="text-[#8f8f8f] leading-6">Email Address</h4>
+                        <a href="mailto:contact@osmosisgroup.com" class="text-[#f7f7f7] leading-[1.5]">
+                            contact@osmosisgroup.com
+                        </a>
+                    </div>
+
+                    <div class="font-inter text-base max-sm:text-sm leading-none min-w-64 max-sm:min-w-0 flex flex-col gap-3 max-sm:items-center max-sm:text-center">
+                        <h4 class="text-[#8f8f8f] leading-6">Team</h4>
+                        <a href="team.html" class="text-[#f7f7f7] hover:text-white transition-colors leading-[1.5]">
+                            Osmosis Team
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-0 w-full relative">
+                <img src="../assets/images/3c37ce4090b497408b70baf396e5dda8725fa47e.svg" alt="" class="absolute w-full h-px">
+            </div>
+        </div>
+
+        <div class="font-inter text-base leading-none text-[#8f8f8f] flex flex-wrap items-start justify-between gap-5 w-full max-sm:flex-col max-sm:items-center max-sm:text-center max-sm:gap-4">
+            <p class="flex-1 leading-[1.5] min-w-[295px] max-sm:min-w-0">
+                Generational capital with a mandate to shape the next century of global innovation.
+            </p>
+            <p class="leading-[1.5] min-w-[295px] max-sm:min-w-0">
+                © 2025 Osmosis Group. All rights reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
