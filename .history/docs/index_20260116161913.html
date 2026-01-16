@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osmosis Group - Private Capital. Global Vision.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Local font definitions */
+        @font-face {
+            font-family: 'Inter';
+            src: url('assets/fonts/Inter_24pt-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('assets/fonts/Inter_24pt-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('assets/fonts/Inter_24pt-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Raleway';
+            src: url('assets/fonts/Raleway-Bold.ttf') format('truetype');
+            font-weight: 600;
+            /* Map to semibold */
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Raleway';
+            src: url('assets/fonts/Raleway-Bold.ttf') format('truetype');
+            font-weight: 700;
+            /* Also map to bold */
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-raleway {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Navbar styles */
+        .navbar-transparent {
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-white {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-white .logo-white {
+            filter: brightness(0);
+        }
+
+        .navbar-white .contact-btn {
+            background: #121212 !important;
+        }
+
+        .navbar-white .contact-btn span {
+            color: white !important;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger-btn {
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn:hover {
+            opacity: 0.9;
+        }
+
+        .hamburger-btn img {
+            display: block;
+        }
+
+        /* Radial Menu Styles */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(30, 30, 30, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 30, 30, 0.3) 0%, transparent 50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 99;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-dropdown {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .menu-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+            background-image: url('assets/images/b1eb1be9fd07e7a10cbfdad2aa3d5cb9b0bebb6d.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .menu-close-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #f7f7f7;
+            font-size: 28px;
+            font-weight: 300;
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .menu-close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-dropdown.active .menu-top-line {
+            opacity: 1;
+        }
+
+        .radial-menu {
+            position: relative;
+            width: 332px;
+            height: 332px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s ease 0.2s;
+        }
+
+        .menu-dropdown.active .radial-menu {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .radial-menu-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .radial-segment {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            fill: rgba(255, 255, 255, 0.08);
+            stroke: #121212;
+            stroke-width: 1;
+            backdrop-filter: blur(2px);
+        }
+
+        .radial-segment:hover {
+            fill: rgba(255, 255, 255, 0.15);
+        }
+
+        .menu-dropdown.active .radial-segment {
+            opacity: 1;
+        }
+
+        .radial-segment:nth-child(1) { transition-delay: 0.3s; }
+        .radial-segment:nth-child(2) { transition-delay: 0.35s; }
+        .radial-segment:nth-child(3) { transition-delay: 0.4s; }
+        .radial-segment:nth-child(4) { transition-delay: 0.45s; }
+        .radial-segment:nth-child(5) { transition-delay: 0.5s; }
+
+        .radial-segment:hover {
+            filter: brightness(1.2);
+            transform: scale(1);
+        }
+
+        .radial-segment-text {
+            fill: #ffffff;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        .radial-segment-icon {
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 2;
+            pointer-events: none;
+        }
+
+        .radial-center-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            z-index: 10;
+            padding: 11px;
+        }
+
+        .menu-dropdown.active .radial-center-button {
+            opacity: 1;
+            transition-delay: 0.6s;
+        }
+
+        .radial-center-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .center-button-icon {
+            width: 38px;
+            height: 38px;
+            color: #121212;
+            stroke: #121212;
+        }
+
+        @media (max-width: 640px) {
+            .radial-menu {
+                width: 280px;
+                height: 280px;
+            }
+
+            .radial-segment-text {
+                font-size: 12px;
+            }
+
+            .radial-center-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .center-button-icon {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        /* Header background optimization for crisp image */
+        header {
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+
+        .mt-m1 {
+            margin-top: -1px;
+        }
+
+        /* Responsive text sizes for headings */
+        .responsive-heading {
+            font-size: 28px;
+        }
+
+        @media (min-width: 640px) {
+            .responsive-heading {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .responsive-heading {
+                font-size: 22px;
+            }
+        }
+
+        /* Responsive text sizes for section titles (60px -> 32px) */
+        .responsive-section-title {
+            font-size: 60px;
+        }
+
+        @media (min-width: 640px) and (max-width: 767px) {
+            .responsive-section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .responsive-section-title {
+                font-size: 32px;
+            }
+        }
+
+        /* Responsive text sizes for hero title (96px -> 38px) */
+        .responsive-hero-title {
+            font-size: 96px;
+        }
+
+        @media (min-width: 640px) and (max-width: 767px) {
+            .responsive-hero-title {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .responsive-hero-title {
+                font-size: 38px;
+            }
+        }
+
+        /* Responsive text sizes for hero subtitle (28px -> 18px) */
+        .responsive-hero-subtitle {
+            font-size: 28px;
+            margin-left: 70px;
+            margin-right: 70px;
+        }
+
+        @media (min-width: 640px) and (max-width: 767px) {
+            .responsive-hero-subtitle {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .responsive-hero-subtitle {
+                font-size: 18px;
+            }
+        }
+
+        /* Footer text responsive style */
+        .footer-description {
+            margin-left: 12px;
+            margin-right: 12px;
+            color: #8f8f8f;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 150% !important;
+        }
+
+        @media (min-width: 640px) {
+            .footer-description {
+                color: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                line-height: 1.5;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Header -->
+    <header
+        class="relative h-screen min-h-screen min-w-[375px] w-full overflow-hidden pt-0 px-0 flex flex-col items-center gap-2.5"
+        style="background: linear-gradient(rgba(12, 60, 96, 0) 79.494%, rgba(12, 60, 96, 0.8) 100%), linear-gradient(90deg, rgba(12, 60, 96, 0.06) 0%, rgba(12, 60, 96, 0.06) 100%), linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%); background-size: auto, auto, auto; background-position: 0% 0%, 0% 0%, 0% 0%; background-repeat: no-repeat;">
+        
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline aria-label="Background video" class="absolute top-0 left-0 w-full h-full object-cover z-0" style="object-fit: cover; object-position: center center;">
+            <source src="assets/viedos/head.mp4" type="video/mp4">
+        </video>
+
+        <!-- Navbar -->
+        <nav id="navbar"
+            class="navbar-transparent fixed top-0 left-0 right-0 z-50 w-full min-w-[412px] box-border flex flex-wrap items-center justify-between gap-6 px-10 max-sm:px-4 py-3.5">
+            <div class="flex items-center justify-center h-7 w-[198px]">
+                <img id="navbar-logo" src="assets/images/52b78646802d6b941480f45a53f4cff110ee0c41.svg"
+                    alt="Osmosis Group" class="h-7 w-[198.429px] logo-white">
+            </div>
+            <button id="hamburger-btn" class="hamburger-btn" aria-label="Menu">
+                <img src="assets/images/btn_Menu.svg" alt="Menu" style="width: 48px; height: 32px;">
+            </button>
+        </nav>
+
+        <!-- Menu Overlay -->
+        <div id="menu-overlay" class="menu-overlay"></div>
+
+        <!-- Menu Dropdown -->
+        <div id="menu-dropdown" class="menu-dropdown">
+            <button id="menu-close-btn" class="menu-close-btn">×</button>
+            
+            <div class="radial-menu">
+                <svg class="radial-menu-svg" viewBox="0 0 332 332" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Home Segment (Top-Left) - 288° to 360° -->
+                    <g class="radial-segment" id="menu-home-segment">
+                        <path d="M 166 166 L 8.1 114.7 A 166 166 0 0 1 166 0 Z"/>
+                        <image href="assets/images/menus/Frame 1707479577.svg" x="63" y="64" width="76" height="49"/>
+                    </g>
+
+                    <!-- About Segment (Top-Right) - 0° to 72° -->
+                    <g class="radial-segment" id="menu-about-segment">
+                        <path d="M 166 166 L 166 0 A 166 166 0 0 1 323.9 114.7 Z"/>
+                        <image href="assets/images/menus/icon_about_line.svg" x="233" y="64" width="28" height="28"/>
+                        <text x="247" y="109" text-anchor="middle" class="radial-segment-text">About</text>
+                    </g>
+
+                    <!-- Our Focus Segment (Right) - 72° to 144° -->
+                    <g class="radial-segment" id="menu-focus-segment">
+                        <path d="M 166 166 L 323.9 114.7 A 166 166 0 0 1 263.6 300.3 Z"/>
+                        <image href="assets/images/menus/icon_our focus_line.png" x="257" y="172" width="28" height="28"/>
+                        <text x="271" y="217" text-anchor="middle" class="radial-segment-text">Our Focus</text>
+                    </g>
+
+                    <!-- Partners Segment (Bottom) - 144° to 216° -->
+                    <g class="radial-segment" id="menu-partners-segment">
+                        <path d="M 166 166 L 263.6 300.3 A 166 166 0 0 1 68.4 300.3 Z"/>
+                        <image href="assets/images/menus/icon_partners_line.png" x="152" y="262" width="28" height="28"/>
+                        <text x="166" y="307" text-anchor="middle" class="radial-segment-text">Partners</text>
+                    </g>
+
+                    <!-- Contact Us Segment (Left) - 216° to 288° -->
+                    <g class="radial-segment" id="menu-contact-segment">
+                        <path d="M 166 166 L 68.4 300.3 A 166 166 0 0 1 8.1 114.7 Z"/>
+                        <image href="assets/images/menus/icon_contact us_line.svg" x="47.5" y="172" width="28" height="28"/>
+                        <text x="61.5" y="217" text-anchor="middle" class="radial-segment-text">Contact Us</text>
+                    </g>
+                </svg>
+
+                <!-- Center Button -->
+                <div class="radial-center-button" id="radial-center-btn">
+                    <img src="assets/images/menus/icon_menu_line.svg" alt="Close menu" class="center-button-icon" style="width: 100%; height: 100%; object-fit: none;"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 flex flex-col items-center justify-center gap-32 w-full h-full">
+            <div class="flex flex-col items-center gap-6 w-full px-4">
+                <h1 class="font-raleway font-bold text-[#f7f7f7] responsive-hero-title text-center leading-none tracking-[-2.5px]"
+                    style="text-shadow: rgba(0,0,0,0.25) 0px 3px 3px;">
+                    Private Capital.<br>Global Vision.
+                </h1>
+                <p
+                    class="font-inter text-[#f7f7f7] responsive-hero-subtitle text-center leading-[1.4] max-w-[600px]">
+                    Investing in innovation, shaping tomorrow.
+                </p>
+                <button id="discover-more-btn" class="bg-[#f7f7f7] flex items-center gap-2 px-12 py-5 max-sm:px-8 max-sm:py-3 rounded-full">
+                    <img src="assets/images/7ddf8fe01ed07d0f9a4cb63913e3d183d3184ca5.svg" alt="" class="w-7 h-7 max-sm:w-5 max-sm:h-5">
+                    <span class="font-raleway font-semibold text-[#121212] text-lg max-sm:text-[18px] leading-[1.4]">Discover More</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Osmosis Group -->
+    <section id="about-section" class="bg-[#121212] min-w-[375px] w-full flex flex-col items-center gap-10 pt-20 pb-10 px-0"
+        style="background-image: url('assets/images/b1eb1be9fd07e7a10cbfdad2aa3d5cb9b0bebb6d.png'); background-size: contain; background-position: 50% 50%;">
+
+        <h2
+            class="font-raleway font-bold text-[#f7f7f7] responsive-section-title text-center leading-[1.3] w-full px-4">
+            About Osmosis Group
+        </h2>
+
+        <div class="flex flex-col items-center gap-5 min-w-[375px] w-full px-4">
+            <!-- Our Legacy & Our Vision Container -->
+            <div class="max-w-[1100px] min-w-[375px] w-full flex flex-col gap-5">
+                <!-- Our Legacy -->
+                <div class="box-border flex flex-wrap items-center justify-center gap-4 px-4 py-0">
+                    <div
+                        class="bg-cover bg-center bg-no-repeat h-[400px] w-[298px] max-sm:w-full max-sm:max-w-[350px] rounded-[4px]">
+                        <img src="assets/images/22c91f35070a44400648ed575a3f3dfd6fe33af8.png" alt=""
+                            class="w-full h-full object-cover rounded-[4px]">
+                    </div>
+                    <div class="flex flex-col gap-3 px-8 py-0 max-sm:px-4">
+                        <div class="flex items-center justify-between w-full">
+                            <h3
+                                class="font-inter font-bold text-[#f7f7f7] responsive-heading leading-[1.3]">
+                                Our Legacy</h3>
+                            
+                        </div>
+                        <p
+                            class="font-inter text-[#8f8f8f] text-xl max-sm:text-base leading-[1.4] w-[300px] max-sm:w-full">
+                            Founded on the Chen & Law family heritage, Osmosis Group carries forward a tradition of
+                            entrepreneurship and resilience. Over decades, we have built, grown, and transformed
+                            businesses across dynamic markets. Our legacy is defined by disciplined capital allocation,
+                            innovation, and a commitment to creating enduring value for future generations.
+                        </p>
+                    </div>
+                    <div class="basis-0 grow h-[4px] max-w-[406px] min-h-px min-w-[100px] max-sm:hidden"></div>
+                </div>
+
+                <!-- Our Vision -->
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <div class="basis-0 grow h-[4px] max-w-[406px] min-h-px min-w-[100px] max-sm:hidden"></div>
+                    <div
+                        class="bg-cover bg-center bg-no-repeat h-[400px] w-[298px] max-sm:w-full max-sm:max-w-[350px] rounded-[4px]">
+                        <img src="assets/images/869d049df9794d840298f6f9406bb6fae86925c9.png" alt=""
+                            class="w-full h-full object-cover rounded-[4px]">
+                    </div>
+                    <div class="flex flex-col gap-3 px-8 py-0 max-sm:px-4">
+                        <div class="flex items-center justify-between w-full">
+                            <h3
+                                class="font-inter font-bold text-[#f7f7f7] responsive-heading leading-[1.3]">
+                                Our Vision</h3>
+                            <!-- <div class="bg-white flex items-center justify-center p-1 rounded-full w-7 h-7">
+                                <img src="assets/images/f63689645259cda1c5876555cf47c9877a4bfdcb.svg" alt=""
+                                    class="w-4 h-4">
+                            </div> -->
+                        </div>
+                        <p
+                            class="font-inter text-[#8f8f8f] text-xl max-sm:text-base leading-[1.4] w-[300px] max-sm:w-full">
+                            We invest generational capital into transformative technologies that shape the next century.
+                            Our focus spans AI, digital assets, health innovation, climate, and cybersecurity. Our
+                            approach is deliberate, global, and anchored in trust.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Focus -->
+    <section id="focus-section"
+        class="bg-[#121212] min-w-[375px] w-full flex flex-col items-center gap-10 pt-10 pb-20 px-[170px] md:px-[100px] sm:px-4"
+        style="background-image: url('assets/images/03cba9839e596c43d94e1758ed308cc4fc4e611f.png'); background-size: contain; background-position: 50% 50%;">
+
+        <h2
+            class="font-raleway font-bold text-[#f7f7f7] responsive-section-title text-center leading-[1.3]" style="width: 300px;">
+            Our Focus</h2>
+
+        <div
+            class="max-w-[1100px] min-w-[375px] w-full flex flex-wrap items-center justify-center gap-20 max-sm:gap-10 max-sm:flex-col">
+            <div
+                class="flex-1 bg-cover bg-center bg-no-repeat h-[614px] max-sm:h-[400px] min-w-[375px] max-sm:min-w-[300px] max-sm:w-full rounded">
+                <img src="assets/images/7dc2411f2cc2d1058b9ba31efcfc3d47b90e3252.png" alt=""
+                    class="w-full h-full object-cover rounded">
+            </div>
+
+            <div class="flex-1 flex flex-col gap-5 items-center px-4 py-0 min-w-[375px] max-sm:min-w-[300px]">
+                <!-- AI -->
+                <div class="flex flex-col gap-2 w-full">
+                    <div class="flex items-center gap-4 w-full">
+                        <div
+                            class="bg-[#fcfcfc] rounded-full w-[45px] h-[45px] flex items-center justify-center border border-[rgba(0,0,0,0.07)]">
+                            <img src="assets/images/47f3abd6524ba2e3dfe92553cadf4b529d792692.svg" alt=""
+                                class="w-7 h-7">
+                        </div>
+                        <h3
+                            class="font-inter font-bold text-[#f7f7f7] responsive-heading leading-[1.3]">
+                            AI</h3>
+                    </div>
+                    <p class="font-inter text-[#8f8f8f] text-xl max-sm:text-base leading-[1.4] w-full">
+                        Focused on ethical intelligence and human augmentation.
+                    </p>
+                </div>
+
+                <!-- Cryptocurrency -->
+                <div class="flex flex-col gap-2 w-full">
+                    <div class="flex items-center gap-4 w-full">
+                        <div
+                            class="bg-[#fcfcfc] rounded-full w-[45px] h-[45px] max-sm:w-[40px] max-sm:h-[40px] flex items-center justify-center border border-[rgba(0,0,0,0.07)]">
+                            <img src="assets/images/14ce636b3b6fdcc231ae0bc9ae18d6c035d0cc6f.svg" alt=""
+                                class="w-7 h-7 max-sm:w-6 max-sm:h-6">
+                        </div>
+                        <h3
+                            class="font-inter font-bold text-[#f7f7f7] responsive-heading leading-[1.3]">
+                            Cryptocurrency</h3>
+                    </div>
+                    <p class="font-inter text-[#8f8f8f] text-xl max-sm:text-base leading-[1.4] w-full">
+                        New rails for a borderless economy.
+                    </p>
+                </div>
+
+                <!-- Health -->
+                <div class="flex flex-col gap-2 w-full">
+                    <div class="flex items-center gap-4 w-full">
+                        <div
+                            class="bg-[#fcfcfc] rounded-full w-[45px] h-[45px] max-sm:w-[40px] max-sm:h-[40px] flex items-center justify-center border border-[rgba(0,0,0,0.07)]">
+                            <img src="assets/images/4ec094121e5a8d8f838db0ebc84cbc3e94db6348.svg" alt=""
+                                class="w-7 h-7 max-sm:w-6 max-sm:h-6">
+                        </div>
+                        <h3 class="font-inter font-bold text-[#f7f7f7] responsive-heading leading-[1.3]">
+                            Health</h3>
+                    </div>
+                    <p class="font-inter text-[#8f8f8f] text-xl max-sm:text-base leading-[1.4] w-full">
+                        Advancing longevity and human potential.
+                    </p>
+                </div>
+
+                <!-- Climate -->
+                <div class="flex flex-col gap-2 w-full">
+                    <div class="flex items-center gap-4 w-full">
+                        <div
+                            class="bg-[#fcfcfc] rounded-full w-[45px] h-[45px] max-sm:w-[40px] max-sm:h-[40px] flex items-center justify-center border border-[rgba(0,0,0,0.07)]">
+                            <img src="assets/images/c6897fbf9661cd36d89c753a508b76d45c1789c2.svg" alt=""
+                                class="w-7 h-7 max-sm:w-6 max-sm:h-6">
+                        </div>
+                        <h3 class="font-inter font-bold text-[#f7f7f7] responsive-heading leading-[1.3]">
+                            Climate</h3>
+                    </div>
+                    <p class="font-inter text-[#8f8f8f] text-xl max-sm:text-base leading-[1.4] w-full">
+                        Powering the transition to a sustainable future.
+                    </p>
+                </div>
+
+                <!-- Cybersecurity -->
+                <div class="flex flex-col gap-2 w-full">
+                    <div class="flex items-center gap-4 w-full">
+                        <div
+                            class="bg-[#fcfcfc] rounded-full w-[45px] h-[45px] max-sm:w-[40px] max-sm:h-[40px] flex items-center justify-center border border-[rgba(0,0,0,0.07)]">
+                            <img src="assets/images/eef18ca54ec13967c29e9788e9099741b4ac9d0e.svg" alt=""
+                                class="w-7 h-7 max-sm:w-6 max-sm:h-6">
+                        </div>
+                        <h3 class="font-inter font-bold text-[#f7f7f7] responsive-heading leading-[1.3]">
+                            Cybersecurity</h3>
+                    </div>
+                    <p class="font-inter text-[#8f8f8f] text-xl leading-[1.4] w-full">
+                        Securing the digital foundation of society.
+                    </p>
+                </div>
+
+                <!-- Blockchain -->
+                <div class="flex flex-col gap-2 w-full">
+                    <div class="flex items-center gap-4 w-full">
+                        <div
+                            class="bg-[#fcfcfc] rounded-full w-[45px] h-[45px] flex items-center justify-center border border-[rgba(0,0,0,0.07)]">
+                            <img src="assets/images/ce2ca3aff7584aa873a8102cc7bdc4d772b83666.svg" alt=""
+                                class="w-7 h-7">
+                        </div>
+                        <h3 class="font-inter font-bold text-[#f7f7f7] responsive-heading leading-[1.3]">Blockchain</h3>
+                    </div>
+                    <p class="font-inter text-[#8f8f8f] text-xl leading-[1.4] w-full">
+                        Rewiring trust, transparency, and value exchange.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Portfolio and Strategic Partners -->
+    <section id="portfolio-section"
+        class="bg-[#121212] min-w-[375px] w-full flex flex-col items-center py-20 max-sm:py-10 px-[170px] md:px-[100px] max-sm:px-8">
+        <!-- Title & Text Section -->
+        <div class="flex flex-col gap-6 max-w-[1100px] min-w-[343px] w-full">
+            <div class="flex flex-col gap-2.5 max-w-[1100px] min-w-[343px] w-full items-center">
+                <h2
+                    class="font-raleway font-bold text-[#f7f7f7] text-5xl md:text-4xl max-sm:text-2xl leading-[1.2] w-full text-center">
+                    Business Portfolio and Strategic Partners
+                </h2>
+                <div class="flex items-center justify-center gap-[26px] w-full">
+                    <p
+                        class="font-inter text-[#f7f7f7] text-base max-sm:text-sm tracking-[2px] max-sm:tracking-[1px] leading-[1.4] text-center">
+                        We partner with founders and teams driving innovation across sectors. These represent our key
+                        holdings and long-term relationships, aligned with our strategic focus.
+                    </p>
+                </div>
+            </div>
+
+          
+        </div>
+
+        <!-- Our Portfolio Companies -->
+        <div
+            class="rounded-lg flex flex-col items-center gap-0 max-w-[1100px] min-w-[343px] w-full mt-m1">
+            <div class="flex flex-col gap-4 p-6 min-w-[343px] max-sm:min-w-0 items-center">
+                <div class="flex items-center justify-center gap-4">
+                    <h3 class="font-inter font-semibold text-[#F7F7F7] text-[20px] leading-[120%] text-center">Our Portfolio Companies
+                    </h3>
+                </div>
+                <p class="font-inter text-[#8F8F8F] text-[15px] font-normal leading-[140%] tracking-[2px] capitalize text-center">Venture Capital & Private Equity</p>
+            </div>
+
+            <div
+                class="w-full min-w-[343px] h-[440px] flex flex-wrap items-center justify-center gap-6 p-8 max-sm:min-w-0 max-sm:h-auto max-sm:gap-3 max-sm:p-4">
+                <!-- Portfolio company logos grid -->
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/1.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/2.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/4.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/5.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/6.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/7.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/8.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/9.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/10.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/11.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/12.png" alt="" class="max-w-full max-h-full object-contain">
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Advisory Partners -->
+        <div
+            class="rounded-lg flex flex-col items-center gap-0 max-w-[1100px] min-w-[343px] w-full mt-m1">
+            <div class="flex flex-col gap-4 p-6 min-w-[343px] max-sm:min-w-0 items-center">
+                <div class="flex items-center justify-center gap-4">
+                    <h3 class="font-inter font-semibold text-[#F7F7F7] text-[20px] leading-[120%] text-center">Our Advisory Partners
+                    </h3>
+                </div>
+                <p class="font-inter text-[#8F8F8F] text-[15px] font-normal leading-[140%] tracking-[2px] capitalize text-center">Corporate Advisory & Capital Markets</p>
+            </div>
+
+            <div
+                class="flex-1 max-w-[660px] min-w-[343px] h-[178px] flex flex-wrap items-center justify-between gap-6 p-8 max-sm:min-w-0 max-sm:h-auto max-sm:justify-center max-sm:gap-3 max-sm:p-0">
+                <!-- Advisory partner logos -->
+                <div class="overflow-hidden flex items-center justify-center max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0">
+                    <img src="assets/images/OSMOSIS GROUP_img/2-1.png" alt="" class="w-[131px] h-[56px] max-sm:w-full max-sm:h-auto object-contain" style="aspect-ratio: 131/56;">
+                </div>
+                <div class="overflow-hidden flex items-center justify-center max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0">
+                    <img src="assets/images/OSMOSIS GROUP_img/2-2.png" alt="" class="w-[116px] h-[14px] max-sm:w-full max-sm:h-auto flex-shrink-0 object-contain" style="aspect-ratio: 58/7;">
+                </div>
+                <div class="overflow-hidden flex items-center justify-center max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0">
+                    <img src="assets/images/OSMOSIS GROUP_img/2-3.png" alt="" class="w-[115px] h-[40px] max-sm:w-full max-sm:h-auto flex-shrink-0 object-contain" style="aspect-ratio: 23/8;">
+                </div>
+                <div class="overflow-hidden flex items-center justify-center max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0">
+                    <img src="assets/images/OSMOSIS GROUP_img/2-4.png" alt="" class="w-[102px] h-[27px] max-sm:w-full max-sm:h-auto flex-shrink-0 object-contain" style="aspect-ratio: 34/9;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Strategic Partners -->
+        <div
+            class="rounded-lg flex flex-col items-center gap-0 max-w-[1100px] min-w-[343px] w-full mt-m1">
+            <div class="flex flex-col gap-4 p-6 min-w-[343px] max-sm:min-w-0 items-center">
+                <div class="flex items-center justify-center gap-4">
+                    <h3 class="font-inter font-semibold text-[#F7F7F7] text-[20px] leading-[120%] text-center">Our Strategic Partners
+                    </h3>
+                </div>
+                <p class="font-inter text-[#8F8F8F] text-[15px] font-normal leading-[140%] tracking-[2px] capitalize text-center">Financial Services & E-commerce</p>
+            </div>
+            <div class="w-full max-w-[1100px] min-w-[343px] flex flex-wrap items-center justify-center gap-6 p-8 max-sm:gap-3 max-sm:p-0">
+                <!-- Row 1 -->
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-1-1.svg" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center" style="margin-top: 10px;">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-1-2.svg" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-1-3.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-1-4.svg" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-1-5.svg" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-1-6.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <!-- Row 2 -->
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-2-1.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-2-2.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-2-3.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-2-4.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-2-5.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-2-6.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <!-- Row 3 -->
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-3-1.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-3-2.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-3-3.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+                <div class="h-14 w-[131px] max-sm:w-[calc(25%-12px)] max-sm:flex-shrink-0 overflow-hidden flex items-center justify-center">
+                    <img src="assets/images/OSMOSIS GROUP_img/3-3-4.png" alt=""
+                        class="max-w-full max-h-full object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="bg-[#121212] min-w-[375px] w-full box-border flex flex-col items-center gap-5 px-10 max-sm:px-4 max-sm:items-start pt-20 max-sm:pt-10 pb-5">
+        <div class="flex flex-col items-center gap-10 max-sm:gap-6 max-sm:items-start w-full">
+            <div class="flex flex-wrap items-center gap-20 w-full max-sm:flex-col max-sm:gap-8 max-sm:items-start">
+                <div
+                    class="flex-1 flex flex-col gap-4 min-w-[295px] max-sm:min-w-0 max-sm:items-start max-sm:text-left">
+                    <img src="assets/images/09d5fa9e369e48faeb654ed1938831ffee2cfe23.svg" alt="Osmosis Group"
+                        class="h-10 w-[283.47px] max-sm:h-8 max-sm:w-[226px]">
+                    <p class="font-inter text-[#f7f7f7] text-base max-sm:text-sm leading-[1.5]">
+                        Chen & Law Family Office Private Capital. Global Vision.
+                    </p>
+                </div>
+
+                <div class="flex-1 flex flex-wrap items-start gap-20 min-w-0 max-sm:flex-col max-sm:gap-6">
+                    <div
+                        class="font-inter text-base max-sm:text-sm leading-none min-w-64 max-sm:min-w-0 flex flex-col gap-3 max-sm:items-start max-sm:text-left">
+                        <h4 class="text-[#8f8f8f] leading-6">Address</h4>
+                        <address class="text-[#f7f7f7] leading-[1.5] not-italic">
+                            16 Floor, 60 GLOUCESTER ROAD,<br>
+                            Wan Chai, Hong Kong
+                        </address>
+                    </div>
+
+                    <div
+                        class="font-inter text-base max-sm:text-sm leading-none min-w-64 max-sm:min-w-0 flex flex-col gap-3 max-sm:items-start max-sm:text-left">
+                        <h4 class="text-[#8f8f8f] leading-6">Email Address</h4>
+                        <a href="mailto:contact@osmosisgroup.com" class="text-[#f7f7f7] leading-[1.5]">
+                            contact@osmosisgroup.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-0 w-full relative">
+                <img src="assets/images/3c37ce4090b497408b70baf396e5dda8725fa47e.svg" alt=""
+                    class="absolute w-full h-px">
+            </div>
+        </div>
+
+        <div
+            class="font-inter text-base leading-none text-[#8f8f8f] flex flex-wrap items-start justify-between gap-5 w-full max-sm:flex-col max-sm:items-start max-sm:text-left max-sm:gap-4">
+            <p class="flex-1 leading-[1.5] min-w-[295px] max-sm:min-w-0 footer-description">
+                Generational capital with a mandate to shape the next century of global innovation.
+            </p>
+            <p class="leading-[1.5] min-w-[295px] max-sm:min-w-0 footer-description">
+                © 2026 Osmosis Group. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            const discoverButton = document.querySelector('[class*="Discover More"]');
+            const header = document.querySelector('header');
+
+            // Calculate the position of the "Discover More" button
+            const headerHeight = header.offsetHeight;
+            const discoverButtonOffset = headerHeight - 450; // Trigger a bit before reaching the button
+
+            if (window.scrollY >= discoverButtonOffset) {
+                // Switch to white navbar
+                navbar.classList.remove('navbar-transparent');
+                navbar.classList.add('navbar-white');
+            } else {
+                // Switch back to transparent navbar
+                navbar.classList.remove('navbar-white');
+                navbar.classList.add('navbar-transparent');
+            }
+        });
+
+        // Add smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+
+            // Discover More button scroll to About section
+            const discoverMoreBtn = document.getElementById('discover-more-btn');
+            if (discoverMoreBtn) {
+                discoverMoreBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const aboutSection = document.getElementById('about-section');
+                    if (aboutSection) {
+                        aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+
+            // Hamburger Menu Toggle
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const menuDropdown = document.getElementById('menu-dropdown');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const menuCloseBtn = document.getElementById('menu-close-btn');
+
+            function toggleMenu() {
+                hamburgerBtn.classList.toggle('active');
+                menuDropdown.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                // Prevent body scroll when menu is open
+                if (menuDropdown.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+
+            function closeMenu() {
+                hamburgerBtn.classList.remove('active');
+                menuDropdown.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (hamburgerBtn && menuDropdown && menuOverlay) {
+                hamburgerBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    toggleMenu();
+                });
+
+                if (menuCloseBtn) {
+                    menuCloseBtn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        closeMenu();
+                    });
+                }
+
+                menuOverlay.addEventListener('click', function () {
+                    closeMenu();
+                });
+
+                // Radial menu segment navigation
+                const menuHomeSegment = document.getElementById('menu-home-segment');
+                const menuAboutSegment = document.getElementById('menu-about-segment');
+                const menuFocusSegment = document.getElementById('menu-focus-segment');
+                const menuPartnersSegment = document.getElementById('menu-partners-segment');
+                const menuContactSegment = document.getElementById('menu-contact-segment');
+
+                function navigateToSection(sectionId) {
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        closeMenu();
+                    }
+                }
+
+                if (menuHomeSegment) {
+                    menuHomeSegment.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        closeMenu();
+                    });
+                }
+
+                if (menuAboutSegment) {
+                    menuAboutSegment.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        navigateToSection('about-section');
+                    });
+                }
+
+                if (menuFocusSegment) {
+                    menuFocusSegment.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        navigateToSection('focus-section');
+                    });
+                }
+
+                if (menuPartnersSegment) {
+                    menuPartnersSegment.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        // Navigate to portfolio section as partners
+                        navigateToSection('portfolio-section');
+                    });
+                }
+
+                if (menuContactSegment) {
+                    menuContactSegment.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        navigateToSection('contact-section');
+                    });
+                }
+
+                // Center button (optional functionality)
+                const radialCenterBtn = document.getElementById('radial-center-btn');
+                if (radialCenterBtn) {
+                    radialCenterBtn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        // Can add additional functionality here
+                        closeMenu();
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
